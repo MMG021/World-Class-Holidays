@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — World Class Holidays</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    @media (max-width: 800px) { .contact-layout { grid-template-columns: 1fr; gap: 3rem; } }
+
+    /* Form */
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--dark);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--off-white);
+      border: 1.5px solid transparent;
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.1rem;
+      font-size: 0.95rem;
+      color: var(--dark);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      font-family: var(--font-body);
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(196,151,58,0.12);
+      outline: none;
+      background: var(--white);
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
+    .form-group select { appearance: none; cursor: pointer; }
+
+    .form-submit { margin-top: 0.5rem; }
+    .form-submit .btn { width: 100%; justify-content: center; padding: 1rem; font-size: 1rem; }
+
+    /* Contact Info */
+    .contact-info__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400; line-height: 1.2;
+      color: var(--dark); margin-bottom: 1rem;
+    }
+    .contact-info > p {
+      font-size: 0.95rem; color: var(--gray-1);
+      line-height: 1.75; margin-bottom: 2.5rem;
+    }
+    .contact-detail {
+      display: flex; gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.75rem;
+    }
+    .contact-detail__icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--gold-pale);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.1rem;
+    }
+    .contact-detail__icon svg { width: 20px; height: 20px; }
+    .contact-detail__text strong {
+      display: block; font-size: 0.82rem;
+      font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--dark);
+      margin-bottom: 0.2rem;
+    }
+    .contact-detail__text a,
+    .contact-detail__text p {
+      font-size: 0.95rem; color: var(--gray-1);
+      line-height: 1.5; transition: color 0.3s;
+    }
+    .contact-detail__text a:hover { color: var(--gold); }
+
+    .contact-image {
+      margin-top: 2.5rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .contact-image img {
+      width: 100%; height: 250px;
+      object-fit: cover; display: block;
+    }
+
+    /* Success message */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--off-white);
+      border-radius: var(--radius-lg);
+    }
+    .form-success.show { display: block; }
+    .form-success__icon { font-size: 3rem; margin-bottom: 1rem; }
+    .form-success h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem; font-weight: 400;
+      color: var(--dark); margin-bottom: 0.5rem;
+    }
+    .form-success p { font-size: 0.95rem; color: var(--gray-1); line-height: 1.6; }
+
+    /* Office hours card */
+    .hours-card {
+      background: var(--dark-3);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      margin-top: 2rem;
+    }
+    .hours-card h4 {
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .hours-row {
+      display: flex; justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .hours-row:last-child { border: none; }
+    .hours-row span { font-size: 0.875rem; color: rgba(255,255,255,0.6); }
+    .hours-row strong { font-size: 0.875rem; font-weight: 500; color: var(--white); }
+  </style>
+</head>
+<body>
+  <header class="nav scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-mark">✦</span>
+        <span class="nav__logo-text" style="color:var(--dark)">World Class Holidays</span>
+      </a>
+      <nav class="nav__links">
+        <a href="destinations.html" style="color:var(--gray-1)">Destinations</a>
+        <a href="packages.html" style="color:var(--gray-1)">Packages</a>
+        <a href="index.html#about" style="color:var(--gray-1)">About</a>
+        <a href="contact.html" style="color:var(--dark);font-weight:600">Contact</a>
+      </nav>
+      <a href="packages.html" class="btn btn--gold nav__cta">View Packages</a>
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <span style="background:var(--dark)"></span>
+        <span style="background:var(--dark)"></span>
+        <span style="background:var(--dark)"></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="destinations.html">Destinations</a>
+      <a href="packages.html">Packages</a>
+      <a href="index.html#about">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="packages.html" class="btn btn--gold">View Packages</a>
+    </div>
+  </header>
+
+  <div style="height:72px"></div>
+
+  <!-- Page Hero -->
+  <section class="page-hero" style="height:45vh;min-height:350px">
+    <div class="page-hero__bg" style="background-image:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1920&q=80')"></div>
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content container">
+      <p class="section__eyebrow">We'd Love to Hear From You</p>
+      <h1>Get in Touch</h1>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" style="background:var(--white)">
+    <div class="container">
+      <div class="contact-layout">
+
+        <!-- Form -->
+        <div class="reveal">
+          <div class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" placeholder="James" required />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" placeholder="Mitchell" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" placeholder="james@example.com" required />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" placeholder="+44 7700 900000" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Dream Destination</label>
+                <input type="text" placeholder="Maldives, Japan..." />
+              </div>
+              <div class="form-group">
+                <label>Budget (per person)</label>
+                <select>
+                  <option value="">Select range</option>
+                  <option>Under £2,000</option>
+                  <option>£2,000 – £4,000</option>
+                  <option>£4,000 – £7,000</option>
+                  <option>£7,000 – £12,000</option>
+                  <option>£12,000+</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Travel Date</label>
+                <input type="month" />
+              </div>
+              <div class="form-group">
+                <label>Number of Travellers</label>
+                <select>
+                  <option>1 person</option>
+                  <option selected>2 people</option>
+                  <option>3–4 people</option>
+                  <option>5–8 people</option>
+                  <option>Group (9+)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Tell Us Your Dream</label>
+              <textarea placeholder="Describe your ideal holiday — the more detail, the better. We'll craft something extraordinary around your vision."></textarea>
+            </div>
+            <div class="form-submit">
+              <button type="button" class="btn btn--gold" onclick="submitForm()">Send My Enquiry →</button>
+            </div>
+          </div>
+
+          <div class="form-success" id="formSuccess">
+            <div class="form-success__icon">✦</div>
+            <h3>Thank You!</h3>
+            <p>Your enquiry has been received. One of our travel designers will be in touch within 24 hours to start crafting your perfect journey.</p>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="contact-info reveal">
+          <h2 class="contact-info__title">Let's Create Something<br /><em>Extraordinary</em></h2>
+          <p>Our travel designers are on hand to turn your dream holiday into a meticulously planned reality. Whether you have a destination in mind or simply a feeling — we'll take it from there.</p>
+
+          <div class="contact-detail">
+            <div class="contact-detail__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.06 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z"/></svg>
+            </div>
+            <div class="contact-detail__text">
+              <strong>Phone</strong>
+              <a href="tel:+441234567890">+44 (0) 1234 567 890</a>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-detail__text">
+              <strong>Email</strong>
+              <a href="mailto:hello@worldclassholidays.org">hello@worldclassholidays.org</a>
+            </div>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-detail__text">
+              <strong>Address</strong>
+              <p>12 Mayfair Square, London W1K 2AB<br />United Kingdom</p>
+            </div>
+          </div>
+
+          <div class="hours-card">
+            <h4>Office Hours</h4>
+            <div class="hours-row">
+              <span>Monday – Friday</span>
+              <strong>9:00am – 7:00pm</strong>
+            </div>
+            <div class="hours-row">
+              <span>Saturday</span>
+              <strong>10:00am – 4:00pm</strong>
+            </div>
+            <div class="hours-row">
+              <span>Sunday</span>
+              <strong>Emergency only</strong>
+            </div>
+          </div>
+
+          <div class="contact-image">
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=80" alt="Our team" loading="lazy" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">
+            <span class="nav__logo-mark">✦</span>
+            <span class="nav__logo-text">World Class Holidays</span>
+          </a>
+          <p>Crafting extraordinary travel experiences for discerning travellers since 2013.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Explore</h4>
+          <a href="destinations.html">Destinations</a>
+          <a href="packages.html">All Packages</a>
+          <a href="index.html#about">About</a>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <a href="mailto:hello@worldclassholidays.org">hello@worldclassholidays.org</a>
+          <a href="tel:+441234567890">+44 (0) 1234 567 890</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 World Class Holidays. All rights reserved.</p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function submitForm() {
+      const form = document.getElementById('contactForm');
+      const success = document.getElementById('formSuccess');
+      form.style.opacity = '0';
+      form.style.transition = 'opacity 0.4s ease';
+      setTimeout(() => {
+        form.style.display = 'none';
+        success.classList.add('show');
+      }, 400);
+    }
+  </script>
+</body>
+</html>

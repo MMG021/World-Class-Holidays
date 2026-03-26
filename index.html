@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Class Holidays — Extraordinary Travel Experiences</title>
+  <meta name="description" content="Curated luxury travel experiences crafted for those who demand the extraordinary. Discover the world's finest destinations with World Class Holidays." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
+  <header class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-mark">✦</span>
+        <span class="nav__logo-text">World Class Holidays</span>
+      </a>
+      <nav class="nav__links">
+        <a href="destinations.html">Destinations</a>
+        <a href="packages.html">Packages</a>
+        <a href="#about">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="packages.html" class="btn btn--outline nav__cta">Plan My Trip</a>
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="destinations.html">Destinations</a>
+      <a href="packages.html">Packages</a>
+      <a href="#about">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="packages.html" class="btn btn--gold">Plan My Trip</a>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+  <section class="hero">
+    <div class="hero__bg" id="heroBg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal">Crafted for the extraordinary traveller</p>
+      <h1 class="hero__title reveal">
+        Go where the<br /><em>story takes you.</em>
+      </h1>
+      <p class="hero__sub reveal">
+        Handcrafted journeys to the world's most breathtaking destinations.<br />
+        Every detail, perfectly arranged.
+      </p>
+      <div class="hero__search reveal">
+        <div class="search-bar">
+          <div class="search-bar__field">
+            <label>Destination</label>
+            <input type="text" placeholder="Where to?" />
+          </div>
+          <div class="search-bar__divider"></div>
+          <div class="search-bar__field">
+            <label>Departure</label>
+            <input type="text" placeholder="Choose date" id="depDate" />
+          </div>
+          <div class="search-bar__divider"></div>
+          <div class="search-bar__field">
+            <label>Travellers</label>
+            <input type="text" placeholder="2 Adults" />
+          </div>
+          <button class="search-bar__btn">Explore</button>
+        </div>
+      </div>
+    </div>
+    <div class="hero__scroll-hint">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ STATS BAR ═══════════════════════════ -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stats__item reveal">
+          <span class="stats__num" data-target="2400">0</span><span class="stats__suffix">+</span>
+          <p>Journeys Crafted</p>
+        </div>
+        <div class="stats__item reveal">
+          <span class="stats__num" data-target="58">0</span><span class="stats__suffix"></span>
+          <p>Countries Covered</p>
+        </div>
+        <div class="stats__item reveal">
+          <span class="stats__num" data-target="4">0</span><span class="stats__suffix">.9★</span>
+          <p>Average Rating</p>
+        </div>
+        <div class="stats__item reveal">
+          <span class="stats__num" data-target="12">0</span><span class="stats__suffix">yrs</span>
+          <p>Of Excellence</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ DESTINATIONS ══════════════════════════ -->
+  <section class="section destinations" id="destinations">
+    <div class="container">
+      <div class="section__header reveal">
+        <p class="section__eyebrow">Explore the World</p>
+        <h2 class="section__title">Iconic Destinations</h2>
+        <p class="section__sub">From the azure lagoons of the Maldives to the ancient temples of Kyoto — we take you there in style.</p>
+      </div>
+      <div class="dest__grid">
+
+        <div class="dest__card dest__card--large reveal">
+          <div class="dest__img" style="background-image:url('https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=900&q=80')"></div>
+          <div class="dest__info">
+            <p class="dest__region">Indian Ocean</p>
+            <h3>Maldives</h3>
+            <p class="dest__desc">Overwater bungalows, crystal lagoons, and silence.</p>
+            <a href="destinations.html" class="dest__link">Discover <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="dest__card reveal">
+          <div class="dest__img" style="background-image:url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=700&q=80')"></div>
+          <div class="dest__info">
+            <p class="dest__region">Greece</p>
+            <h3>Santorini</h3>
+            <p class="dest__desc">Whitewashed cliffs above the Aegean Sea.</p>
+            <a href="destinations.html" class="dest__link">Discover <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="dest__card reveal">
+          <div class="dest__img" style="background-image:url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=700&q=80')"></div>
+          <div class="dest__info">
+            <p class="dest__region">Indonesia</p>
+            <h3>Bali</h3>
+            <p class="dest__desc">Temples, terraces, and spiritual serenity.</p>
+            <a href="destinations.html" class="dest__link">Discover <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="dest__card reveal">
+          <div class="dest__img" style="background-image:url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=700&q=80')"></div>
+          <div class="dest__info">
+            <p class="dest__region">Japan</p>
+            <h3>Tokyo</h3>
+            <p class="dest__desc">Neon modernity meets ancient tradition.</p>
+            <a href="destinations.html" class="dest__link">Discover <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="dest__card reveal">
+          <div class="dest__img" style="background-image:url('https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=80')"></div>
+          <div class="dest__info">
+            <p class="dest__region">Kenya</p>
+            <h3>Masai Mara</h3>
+            <p class="dest__desc">The Great Migration. Raw wilderness. Pure awe.</p>
+            <a href="destinations.html" class="dest__link">Discover <span>→</span></a>
+          </div>
+        </div>
+
+        <div class="dest__card reveal">
+          <div class="dest__img" style="background-image:url('https://images.unsplash.com/photo-1431274172761-fcdab704a5c4?w=700&q=80')"></div>
+          <div class="dest__info">
+            <p class="dest__region">France</p>
+            <h3>Paris</h3>
+            <p class="dest__desc">Romance, haute cuisine, and timeless elegance.</p>
+            <a href="destinations.html" class="dest__link">Discover <span>→</span></a>
+          </div>
+        </div>
+
+      </div>
+      <div class="section__cta reveal">
+        <a href="destinations.html" class="btn btn--outline">View All Destinations</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ PACKAGES ════════════════════════════ -->
+  <section class="section packages" id="packages">
+    <div class="container">
+      <div class="section__header reveal">
+        <p class="section__eyebrow">Curated Journeys</p>
+        <h2 class="section__title">Featured Packages</h2>
+        <p class="section__sub">Every package is tailor-made — not a template, not a tour group. Yours alone.</p>
+      </div>
+      <div class="pkg__grid">
+
+        <div class="pkg__card reveal">
+          <div class="pkg__img" style="background-image:url('https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80')">
+            <span class="pkg__badge">Most Popular</span>
+          </div>
+          <div class="pkg__body">
+            <p class="pkg__tag">Romance · Maldives</p>
+            <h3>Romantic Escape</h3>
+            <p>7 nights in a private overwater villa. Sunset sailing, coral reef diving, and in-water dining under the stars.</p>
+            <ul class="pkg__features">
+              <li>✦ Private overwater villa</li>
+              <li>✦ All meals included</li>
+              <li>✦ Seaplane transfers</li>
+              <li>✦ Couples spa retreat</li>
+            </ul>
+            <div class="pkg__footer">
+              <div class="pkg__price">
+                <span class="pkg__from">from</span>
+                <span class="pkg__amount">£4,299</span>
+                <span class="pkg__per">/ person</span>
+              </div>
+              <a href="packages.html" class="btn btn--gold">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pkg__card reveal">
+          <div class="pkg__img" style="background-image:url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80')">
+          </div>
+          <div class="pkg__body">
+            <p class="pkg__tag">Culture · Japan</p>
+            <h3>Cultural Odyssey</h3>
+            <p>10 days across Tokyo, Kyoto, and Osaka. Private guides, tea ceremonies, and Michelin-starred dining.</p>
+            <ul class="pkg__features">
+              <li>✦ Private cultural guide</li>
+              <li>✦ Ryokan stays</li>
+              <li>✦ Bullet train passes</li>
+              <li>✦ 3 Michelin restaurants</li>
+            </ul>
+            <div class="pkg__footer">
+              <div class="pkg__price">
+                <span class="pkg__from">from</span>
+                <span class="pkg__amount">£3,799</span>
+                <span class="pkg__per">/ person</span>
+              </div>
+              <a href="packages.html" class="btn btn--gold">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pkg__card reveal">
+          <div class="pkg__img" style="background-image:url('https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800&q=80')">
+            <span class="pkg__badge pkg__badge--new">New</span>
+          </div>
+          <div class="pkg__body">
+            <p class="pkg__tag">Adventure · Kenya</p>
+            <h3>Safari & Soul</h3>
+            <p>8 days in the Masai Mara. Sunrise game drives, luxury tented camps, and Maasai village experiences.</p>
+            <ul class="pkg__features">
+              <li>✦ Luxury tented camp</li>
+              <li>✦ Daily game drives</li>
+              <li>✦ Bush dinner experience</li>
+              <li>✦ Hot air balloon safari</li>
+            </ul>
+            <div class="pkg__footer">
+              <div class="pkg__price">
+                <span class="pkg__from">from</span>
+                <span class="pkg__amount">£5,199</span>
+                <span class="pkg__per">/ person</span>
+              </div>
+              <a href="packages.html" class="btn btn--gold">Book Now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="section__cta reveal">
+        <a href="packages.html" class="btn btn--outline">View All Packages</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ HOW IT WORKS ══════════════════════════ -->
+  <section class="section how" id="how">
+    <div class="container">
+      <div class="section__header reveal">
+        <p class="section__eyebrow">The Process</p>
+        <h2 class="section__title">Your Journey Begins Here</h2>
+      </div>
+      <div class="how__grid">
+        <div class="how__step reveal">
+          <div class="how__num">01</div>
+          <h3>Tell Us Your Dream</h3>
+          <p>Share your vision, dates, and budget. We listen to every detail — no two trips are ever the same.</p>
+        </div>
+        <div class="how__connector reveal"></div>
+        <div class="how__step reveal">
+          <div class="how__num">02</div>
+          <h3>We Craft Your Itinerary</h3>
+          <p>Our travel designers build a personalised itinerary with handpicked hotels, experiences, and transfers.</p>
+        </div>
+        <div class="how__connector reveal"></div>
+        <div class="how__step reveal">
+          <div class="how__num">03</div>
+          <h3>Travel in Pure Style</h3>
+          <p>Arrive to everything arranged. 24/7 concierge support from departure to return — we're always there.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════ DARK QUOTE BAND ═════════════════════════ -->
+  <section class="quote-band">
+    <div class="container">
+      <blockquote class="reveal">
+        <p>"Not all those who wander are lost — but the ones who travel with us always return transformed."</p>
+        <cite>— World Class Holidays</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════ TESTIMONIALS ══════════════════════════ -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section__header reveal">
+        <p class="section__eyebrow">Real Stories</p>
+        <h2 class="section__title">What Our Travellers Say</h2>
+      </div>
+      <div class="testi__track" id="testiTrack">
+        <div class="testi__card">
+          <div class="testi__stars">★★★★★</div>
+          <p>"The Maldives package was beyond anything we imagined. Every tiny detail was perfect — from the seaplane landing to the private dinner on the sandbank. We felt like royalty."</p>
+          <div class="testi__author">
+            <img src="https://i.pravatar.cc/60?img=47" alt="Sarah M" />
+            <div>
+              <strong>Sarah Mitchell</strong>
+              <span>London, UK · Maldives Package</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi__card">
+          <div class="testi__stars">★★★★★</div>
+          <p>"Japan was always a dream trip for us. The cultural guides they arranged knew every hidden temple and ramen spot. The ryokan experience alone was worth the entire journey."</p>
+          <div class="testi__author">
+            <img src="https://i.pravatar.cc/60?img=12" alt="James K" />
+            <div>
+              <strong>James & Priya Kaur</strong>
+              <span>Manchester, UK · Cultural Odyssey</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi__card">
+          <div class="testi__stars">★★★★★</div>
+          <p>"Waking up in a luxury tent with giraffes walking past at sunrise — that's not something you can put into words. World Class Holidays turned a bucket list item into reality."</p>
+          <div class="testi__author">
+            <img src="https://i.pravatar.cc/60?img=33" alt="David O" />
+            <div>
+              <strong>David Okafor</strong>
+              <span>Birmingham, UK · Safari & Soul</span>
+            </div>
+          </div>
+        </div>
+        <div class="testi__card">
+          <div class="testi__stars">★★★★★</div>
+          <p>"From the first call to the last transfer home, everything was seamless. It genuinely felt like having a personal travel concierge who cared more about our trip than we did."</p>
+          <div class="testi__author">
+            <img src="https://i.pravatar.cc/60?img=25" alt="Emma L" />
+            <div>
+              <strong>Emma Laurent</strong>
+              <span>Bristol, UK · Santorini Escape</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi__dots" id="testiDots">
+        <button class="testi__dot active" data-idx="0"></button>
+        <button class="testi__dot" data-idx="1"></button>
+        <button class="testi__dot" data-idx="2"></button>
+        <button class="testi__dot" data-idx="3"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════ ABOUT STRIP ════════════════════════════ -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="about__inner">
+        <div class="about__img reveal">
+          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80" alt="Aerial view of a tropical destination" />
+        </div>
+        <div class="about__text reveal">
+          <p class="section__eyebrow">About Us</p>
+          <h2>We Don't Sell Trips.<br />We Create Memories.</h2>
+          <p>World Class Holidays was founded with one simple belief: that extraordinary travel should be effortless. For over a decade, our team of passionate travel designers has crafted personalised journeys for discerning travellers who want more than a package holiday.</p>
+          <p>Every destination we recommend, we have experienced ourselves. Every hotel we suggest, we have inspected personally. Every supplier we work with shares our uncompromising standard of excellence.</p>
+          <a href="contact.html" class="btn btn--gold">Start Your Journey</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ NEWSLETTER ═══════════════════════════ -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter__inner reveal">
+        <div class="newsletter__text">
+          <h2>The World Is Waiting.</h2>
+          <p>Get exclusive travel inspiration, early-access packages, and insider guides — delivered to your inbox.</p>
+        </div>
+        <form class="newsletter__form" onsubmit="handleNewsletter(event)">
+          <input type="email" placeholder="Your email address" required />
+          <button type="submit" class="btn btn--gold">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ FOOTER ══════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">
+            <span class="nav__logo-mark">✦</span>
+            <span class="nav__logo-text">World Class Holidays</span>
+          </a>
+          <p>Crafting extraordinary travel experiences for discerning travellers since 2013.</p>
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter/X">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Explore</h4>
+          <a href="destinations.html">Destinations</a>
+          <a href="packages.html">All Packages</a>
+          <a href="packages.html#honeymoon">Honeymoons</a>
+          <a href="packages.html#adventure">Adventures</a>
+          <a href="packages.html#family">Family Trips</a>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="#about">About Us</a>
+          <a href="#testimonials">Reviews</a>
+          <a href="contact.html">Contact</a>
+          <a href="#">Press</a>
+          <a href="#">Careers</a>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <a href="mailto:hello@worldclassholidays.org">hello@worldclassholidays.org</a>
+          <a href="tel:+441234567890">+44 (0) 1234 567 890</a>
+          <p style="color:var(--gray-1);font-size:0.85rem;margin-top:0.5rem;">Mon–Fri: 9am – 7pm<br/>Sat: 10am – 4pm</p>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 World Class Holidays. All rights reserved.</p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

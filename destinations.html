@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Destinations — World Class Holidays</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .dest-page__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) { .dest-page__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px)  { .dest-page__grid { grid-template-columns: 1fr; } }
+
+    .dest-full__card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.5s var(--ease-spring), box-shadow 0.5s var(--ease-spring);
+      box-shadow: var(--shadow-sm);
+    }
+    .dest-full__card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    .dest-full__img {
+      width: 100%; height: 320px;
+      background-size: cover; background-position: center;
+      transition: transform 0.7s var(--ease-spring);
+    }
+    .dest-full__card:hover .dest-full__img { transform: scale(1.06); }
+    .dest-full__info {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2rem 1.5rem 1.5rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%);
+      color: var(--white);
+    }
+    .dest-full__region {
+      font-size: 0.7rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold-light);
+      margin-bottom: 0.3rem;
+    }
+    .dest-full__info h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem; font-weight: 400;
+      margin-bottom: 0.35rem;
+    }
+    .dest-full__info p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.7);
+      margin-bottom: 0.75rem; line-height: 1.5;
+    }
+    .dest-full__meta {
+      display: flex; gap: 1rem;
+    }
+    .dest-full__meta span {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.06em;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 0.25rem 0.7rem;
+      border-radius: var(--radius-xl);
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* Continent filter */
+    .continent-filter {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      justify-content: center; margin-bottom: 3rem;
+    }
+    .continent-btn {
+      padding: 0.5rem 1.3rem;
+      border-radius: var(--radius-xl);
+      border: 1.5px solid rgba(0,0,0,0.15);
+      font-size: 0.82rem; font-weight: 500;
+      cursor: pointer; background: none;
+      transition: var(--transition); color: var(--dark);
+    }
+    .continent-btn.active, .continent-btn:hover {
+      background: var(--dark); color: var(--white);
+      border-color: var(--dark);
+    }
+
+    /* Featured banner */
+    .dest-featured {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+    }
+    .dest-featured__img {
+      width: 100%; height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s var(--ease-spring);
+    }
+    .dest-featured:hover .dest-featured__img { transform: scale(1.04); }
+    .dest-featured__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+    }
+    .dest-featured__content {
+      position: absolute; bottom: 2.5rem; left: 2.5rem; right: 2.5rem;
+      color: var(--white);
+    }
+    .dest-featured__content .section__eyebrow { color: var(--gold-light); margin-bottom: 0.5rem; }
+    .dest-featured__content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300; margin-bottom: 0.75rem;
+    }
+    .dest-featured__content p {
+      font-size: 1rem; color: rgba(255,255,255,0.8);
+      max-width: 500px; margin-bottom: 1.5rem; line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <header class="nav scrolled" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-mark">✦</span>
+        <span class="nav__logo-text" style="color:var(--dark)">World Class Holidays</span>
+      </a>
+      <nav class="nav__links">
+        <a href="destinations.html" style="color:var(--dark);font-weight:600">Destinations</a>
+        <a href="packages.html" style="color:var(--gray-1)">Packages</a>
+        <a href="index.html#about" style="color:var(--gray-1)">About</a>
+        <a href="contact.html" style="color:var(--gray-1)">Contact</a>
+      </nav>
+      <a href="packages.html" class="btn btn--gold nav__cta">Plan My Trip</a>
+      <button class="nav__burger" id="burger" aria-label="Menu">
+        <span style="background:var(--dark)"></span>
+        <span style="background:var(--dark)"></span>
+        <span style="background:var(--dark)"></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="destinations.html">Destinations</a>
+      <a href="packages.html">Packages</a>
+      <a href="index.html#about">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="packages.html" class="btn btn--gold">Plan My Trip</a>
+    </div>
+  </header>
+
+  <div style="height:72px"></div>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero__bg" style="background-image:url('https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1920&q=80')"></div>
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content container">
+      <p class="section__eyebrow">The World Awaits</p>
+      <h1>Destinations</h1>
+    </div>
+  </section>
+
+  <!-- Destinations -->
+  <section class="section" style="background:var(--white)">
+    <div class="container">
+
+      <div class="section__header reveal">
+        <p class="section__eyebrow">58 Countries · Counting</p>
+        <h2 class="section__title">Where Will You Go Next?</h2>
+        <p class="section__sub">From private island escapes to mountain hideaways — every destination we offer has been visited and vetted by our team.</p>
+      </div>
+
+      <div class="continent-filter reveal">
+        <button class="continent-btn active" data-cont="all">All</button>
+        <button class="continent-btn" data-cont="asia">Asia</button>
+        <button class="continent-btn" data-cont="europe">Europe</button>
+        <button class="continent-btn" data-cont="africa">Africa</button>
+        <button class="continent-btn" data-cont="oceania">Oceania</button>
+        <button class="continent-btn" data-cont="americas">Americas</button>
+      </div>
+
+      <!-- Featured -->
+      <div class="dest-featured reveal" data-cont="asia oceania">
+        <img class="dest-featured__img" src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1400&q=80" alt="Maldives" loading="lazy" />
+        <div class="dest-featured__overlay"></div>
+        <div class="dest-featured__content">
+          <p class="section__eyebrow">Editor's Choice · Indian Ocean</p>
+          <h2>The Maldives</h2>
+          <p>1,200 coral islands stretching across the equator. Overwater bungalows, bioluminescent bays, and silence so complete you can hear the reef breathing.</p>
+          <a href="packages.html" class="btn btn--gold">Explore Packages</a>
+        </div>
+      </div>
+
+      <div class="dest-page__grid">
+
+        <div class="dest-full__card reveal" data-cont="europe">
+          <div class="dest-full__img" style="background-image:url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=700&q=80')"></div>
+          <div class="dest-full__info">
+            <p class="dest-full__region">Greece · Europe</p>
+            <h3>Santorini</h3>
+            <p>Caldera views, white-domed churches, and the finest sunsets in the Mediterranean.</p>
+            <div class="dest-full__meta">
+              <span>Best: Apr–Oct</span>
+              <span>6–10 nights</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-full__card reveal" data-cont="asia">
+          <div class="dest-full__img" style="background-image:url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=700&q=80')"></div>
+          <div class="dest-full__info">
+            <p class="dest-full__region">Indonesia · Asia</p>
+            <h3>Bali</h3>
+            <p>Rice terraces, ancient temples, world-class surf, and deep spiritual calm.</p>
+            <div class="dest-full__meta">
+              <span>Best: May–Sep</span>
+              <span>8–14 nights</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-full__card reveal" data-cont="asia">
+          <div class="dest-full__img" style="background-image:url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=700&q=80')"></div>
+          <div class="dest-full__info">
+            <p class="dest-full__region">Japan · Asia</p>
+            <h3>Tokyo</h3>
+            <p>Neon-lit skyscrapers beside thousand-year-old shrines. Nowhere else on earth.</p>
+            <div class="dest-full__meta">
+              <span>Best: Mar–May</span>
+              <span>10–14 nights</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-full__card reveal" data-cont="africa">
+          <div class="dest-full__img" style="background-image:url('https://images.unsplash.com/photo-1516426122078-c23e76319801?w=700&q=80')"></div>
+          <div class="dest-full__info">
+            <p class="dest-full__region">Kenya · Africa</p>
+            <h3>Masai Mara</h3>
+            <p>Witness the greatest wildlife spectacle on earth — the Great Migration.</p>
+            <div class="dest-full__meta">
+              <span>Best: Jul–Oct</span>
+              <span>7–10 nights</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-full__card reveal" data-cont="europe">
+          <div class="dest-full__img" style="background-image:url('https://images.unsplash.com/photo-1431274172761-fcdab704a5c4?w=700&q=80')"></div>
+          <div class="dest-full__info">
+            <p class="dest-full__region">France · Europe</p>
+            <h3>Paris</h3>
+            <p>Romance, haute cuisine, world-class art, and that indescribable Parisian air.</p>
+            <div class="dest-full__meta">
+              <span>Best: Apr–Jun</span>
+              <span>5–8 nights</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-full__card reveal" data-cont="americas">
+          <div class="dest-full__img" style="background-image:url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=700&q=80')"></div>
+          <div class="dest-full__info">
+            <p class="dest-full__region">Brazil · Americas</p>
+            <h3>Rio de Janeiro</h3>
+            <p>Carnival, Christ the Redeemer, Copacabana, and a city that never sleeps.</p>
+            <div class="dest-full__meta">
+              <span>Best: Dec–Mar</span>
+              <span>7–10 nights</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-full__card reveal" data-cont="asia">
+          <div class="dest-full__img" style="background-image:url('https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=700&q=80')"></div>
+          <div class="dest-full__info">
+            <p class="dest-full__region">Thailand · Asia</p>
+            <h3>Phuket & Koh Samui</h3>
+            <p>Turquoise waters, floating markets, street food temples, and beach bliss.</p>
+            <div class="dest-full__meta">
+              <span>Best: Nov–Apr</span>
+              <span>8–12 nights</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-full__card reveal" data-cont="europe">
+          <div class="dest-full__img" style="background-image:url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=700&q=80')"></div>
+          <div class="dest-full__info">
+            <p class="dest-full__region">Italy · Europe</p>
+            <h3>Amalfi Coast</h3>
+            <p>Cliff-top villages, lemon groves, cerulean sea, and the world's best pasta.</p>
+            <div class="dest-full__meta">
+              <span>Best: May–Sep</span>
+              <span>7–10 nights</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dest-full__card reveal" data-cont="africa">
+          <div class="dest-full__img" style="background-image:url('https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=700&q=80')"></div>
+          <div class="dest-full__info">
+            <p class="dest-full__region">Morocco · Africa</p>
+            <h3>Marrakech</h3>
+            <p>Labyrinthine medinas, vibrant souks, palace riads, and Atlas Mountain hikes.</p>
+            <div class="dest-full__meta">
+              <span>Best: Mar–May</span>
+              <span>5–8 nights</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter__inner reveal">
+        <div class="newsletter__text">
+          <h2>Ready to Choose Your Destination?</h2>
+          <p>Speak to one of our travel designers today. No obligation — just inspired conversation.</p>
+        </div>
+        <a href="contact.html" class="btn btn--gold">Talk to an Expert</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="index.html" class="nav__logo">
+            <span class="nav__logo-mark">✦</span>
+            <span class="nav__logo-text">World Class Holidays</span>
+          </a>
+          <p>Crafting extraordinary travel experiences for discerning travellers since 2013.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Explore</h4>
+          <a href="destinations.html">Destinations</a>
+          <a href="packages.html">All Packages</a>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <a href="mailto:hello@worldclassholidays.org">hello@worldclassholidays.org</a>
+          <a href="tel:+441234567890">+44 (0) 1234 567 890</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 World Class Holidays. All rights reserved.</p>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    const contBtns = document.querySelectorAll('.continent-btn');
+    const destCards = document.querySelectorAll('[data-cont]');
+    contBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        contBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cont = btn.dataset.cont;
+        destCards.forEach(card => {
+          const cats = card.dataset.cont || '';
+          const show = cont === 'all' || cats.includes(cont);
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
